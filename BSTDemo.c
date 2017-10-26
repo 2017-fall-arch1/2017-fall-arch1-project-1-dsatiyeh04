@@ -9,9 +9,9 @@ void menu(BSTree *employees){
   printf("2. Add new employee.\n");
   printf("3. Remove employee.\n");
   printf("4. Create file with current employee list.\n");
-  printf("z. Quit program.\n");//doesnt work properly
+  printf("z. Quit program.\n");
 
-  char choice = 'c';
+  char choice = 'x';
   while(choice != 'z'){
     scanf(" %c", &choice);
     putchar(choice);
@@ -33,7 +33,7 @@ void methods(BSTree *employees, char choice){
     getchar();
     char newName[30];
     printf("\nEnter new employee:");
-    fgets(newName, 30, stdin);
+    fgets(newName,30, stdin);
     employees->root = insertNode(employees->root, newName);
     printf("\nNew employee %s has been added.", newName);
     break;
@@ -41,7 +41,7 @@ void methods(BSTree *employees, char choice){
     getchar();
     char deleteName[30];
     printf("\nEnter employee to delete:");
-    fgets(deleteName, 30, stdin);
+    fgets(deleteName,30, stdin);
     employees->root = delete(employees->root, deleteName);
     printf("\nEmployee %s has been deleted.", deleteName);
     break;
@@ -53,8 +53,7 @@ void methods(BSTree *employees, char choice){
     break;
   default:
     printf("\nInvalid entry.");
-  }//end switch
-  menu(employees);
+  }//end switch;
   return;
 }//end methods
 
@@ -65,8 +64,8 @@ void makeFile(BSTree *employees){
 
   char buffer[50];
   time_t now =time(0);
-  strftime(buffer , 50, "Employees as of %Y-%m-%d %H:%M:%S\n\n",
-	   localtime(&now));
+ strftime(buffer ,50, "Employees as of %Y-%m-%d %H:%M:%S\n\n",
+  	   localtime(&now));
   fprintf(newFile, buffer);
 
   inputNamesToFile(employees->root, newFile);
@@ -89,7 +88,7 @@ int main(void){
   menu(employees);
 
   fclose(filePointer);
- freeTree(employees);
+  freeTree(employees);
   return 0;
 
 }//end main

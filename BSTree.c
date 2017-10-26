@@ -12,7 +12,7 @@ BSTree *createTree(){
 }//end createTree
 
 //allocating memory for node
-BSTNode *newNode(char *name){
+BSTNode *createNode(char *name){
   BSTNode *newNode = (BSTNode *)malloc(sizeof(BSTNode));
   newNode->name =copyName(name);
   newNode->left = NULL;
@@ -31,7 +31,7 @@ char *copyName(char *name){
 //inserting node to tree
 BSTNode *insertNode(BSTNode *root, char *ncopy){
   if(!root){
-    return newNode(ncopy);
+    return createNode(ncopy);
   }//end if ceating root node
 
   //if tree is not empty, look for where to insert
